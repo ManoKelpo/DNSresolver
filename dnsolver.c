@@ -1,9 +1,17 @@
-#include <stdio.h> /* Needed for input/output operations */
-#include <stdlib.h> /* Manages dynamic memory allocation */
-#include <netdb.h> /* Hostname resolution */
-#include <arpa/inet.h>
-#include <string.h> /*String managing*/
+/*
+DNSresolver
+Created in 31/08/2023
+By Rayan Araujo
+Version 1.0
+*/
 
+#include <stdio.h>     // Needed for input/output operations
+#include <stdlib.h>    // Manages dynamic memory allocation
+#include <netdb.h>     // Hostname resolution
+#include <arpa/inet.h> // Functions for ip binary form conversion
+#include <string.h>    // String managing
+
+// Handle argument count and storage.
 int main(int argc, char *argv[])
 {
 	if(argc !=2)
@@ -12,10 +20,12 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	char hostname[100]; // Creates a buffer to store the hostname.
+	char hostname[100]; /* Creates a buffer to store the hostname string.*/
 	
+	struct hostent *host_info; /* An instance of the hostent structure in which gethostbyname 
+	 organizes the addresses's found information. */
+
 	// Use gethostbyname to get the IP address of the hostname
-	struct hostent *host_info;
 	host_info = gethostbyname(argv[1]);
 	
 	// Error handler
@@ -27,6 +37,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Print result from the struct hostent
-	printf ("Hostname: %s\n", host_info->h_name);
+	printf ("\nHostname: %s\n", host_info->h_name);
 	printf ("IP address: %s\n", inet_ntoa(*(struct in_addr *)host_info->h_addr));
+	/*inet_ntoa(converts binary form to human legible strings)*/
 }
