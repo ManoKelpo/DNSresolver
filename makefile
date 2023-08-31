@@ -1,0 +1,7 @@
+PROGRAM_NAME = dnsolver
+COMPILER = gcc
+FLAGS = -Wall -g
+all: $(PROGRAM_NAME)
+$(PROGRAM_NAME): $(PROGRAM_NAME).c
+	$(CC) $(CFLAGS) -o $(PROGRAM_NAME) $(PROGRAM_NAME).c
+
