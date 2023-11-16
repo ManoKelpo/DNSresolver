@@ -1,5 +1,5 @@
 # DNSresolver 
-## A simple pProgram for DNS Resolution
+## A simple program for DNS Resolution
 
 ### Description:
 DNSresolver is a simple command-line tool written in C for resolving domain names to IP addresses. This program uses the DNS (Domain Name System) to look up the IP address associated with a given domain.
